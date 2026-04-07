@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Photo Guidelines</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f8f8f8; padding: 16px; }
+        h1 { text-align: center; }
+        .block { background: white; border-radius: 16px; margin: 20px auto; max-width: 500px; padding: 20px; box-shadow: 0 2px 10px #eee;}
+        .block img { width: 100%; border-radius: 6px; margin-bottom: 12px; }
+        .caption { font-size: 16px; color: #333; }
+    </style>
+</head>
+<body>
+    <h1>How to Take a Good Photo</h1>
+    <div class="block">
+        <img src="https://storage.yandexcloud.net/fixpix-media/rec1.jpg" alt="">
+        <div class="caption">1️⃣ Remove any unnecessary items from the frame and use a plain, neutral background (such as a wall or a sheet of paper).</div>
+    </div>
+    <div class="block">
+        <img src="https://storage.yandexcloud.net/fixpix-media/rec2.jpg" alt="">
+        <div class="caption">2️⃣ Use soft, natural, or indoor lighting. Avoid harsh shadows and glare.</div>
+    </div>
+    <div class="block">
+        <img src="https://storage.yandexcloud.net/fixpix-media/rec3.jpg" alt="">
+        <div class="caption">3️⃣ Make sure the photo is sharp and clear — the object should not be blurry and must be visible.</div>
+    </div>
+    <div class="block">
+        <img src="https://storage.yandexcloud.net/fixpix-media/rec4.jpg" alt="">
+        <div class="caption">4️⃣ The entire object should be visible in the frame — no parts cropped out, photographed from the front or above.</div>
+    </div>
+    <script>
+        Telegram.WebApp.ready();
+    </script>
+</body>
+</html>
