@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Мой Профиль</title>
+    
+    <!-- Подключаем скрипт Telegram -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
+    <!-- Подключаем красивый шрифт для приложения -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Базовые настройки */
+        body {
+            background-color: #f0f0f3; /* Тот самый правильный светло-серый цвет */
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #4a4a4a;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* --- ЛОГОТИП --- */
+        .logo-container {
+            width: 100px;
+            height: 100px;
+            border-radius: 25px;
+            background-color: #f0f0f3;
+            /* Выпуклая тень для логотипа */
+            box-shadow: -10px -10px 20px #ffffff, 10px 10px 20px #cecece;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .logo-container img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+        }
+
+        /* --- КАРТОЧКА ИНФОРМАЦИИ (Баланс и Подписка) --- */
+        .info-card {
+            width: 90%;
+            max-width: 350px;
+            background-color: #f0f0f3;
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-bottom: 35px;
+            /* Вдавленная тень (эффект ямки) */
+            box-shadow: inset -6px -6px 10px #ffffff, inset 6px 6px 10px #cecece;
+            text-align: center;
+        }
+
+        .balance-label {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .balance-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: #dc0c14; /* ТВОЙ НОВЫЙ КРАСНЫЙ ЦВЕТ */
+            margin-bottom: 15px;
+        }
+
+        .divider {
+            height: 2px;
+            background-color: #f0f0f3;
+            box-shadow: inset -1px -1px 2px #ffffff, inset 1px 1px 2px #cecece;
+            margin: 15px 0;
+            border-radius: 2px;
+        }
+
+        .sub-info {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .sub-date {
+            font-size: 14px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* --- КНОПКИ --- */
+        .btn {
+            width: 90%;
+            max-width: 350px;
+            padding: 18px;
+            border: none;
+            border-radius: 15px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        /* Стандартная серая выпуклая кнопка */
+        .btn-secondary {
+            background-color: #f0f0f3;
+            color: #4a4a4a;
+            box-shadow: -6px -6px 12px #ffffff, 6px 6px 12px #cecece;
+        }
+
+        .btn-secondary:active {
+            /* Эффект нажатия (вдавливается внутрь) */
+            box-shadow: inset -6px -6px 10px #ffffff, inset 6px 6px 10px #cecece;
+            color: #dc0c14; /* ТВОЙ НОВЫЙ КРАСНЫЙ ЦВЕТ */
+        }
+
+        /* Красная акцентная кнопка (как Selected Button) */
+        .btn-primary {
+            background-color: #dc0c14; /* ТВОЙ НОВЫЙ КРАСНЫЙ ЦВЕТ */
+            color: #ffffff;
+            /* Тень с легким красным оттенком */
+            box-shadow: -6px -6px 12px #ffffff, 6px 6px 12px #cecece;
+        }
+
+        .btn-primary:active {
+            box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.4), inset 4px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Место для логотипа -->
+    <div class="logo-container">
+        <!-- Я вставил временную картинку-плейсхолдер. Сюда потом вставишь ссылку на свой логотип -->
+        <img src="https://cdn-icons-png.flaticon.com/512/3655/3655570.png" alt="Логотип">
+    </div>
+
+    <!-- Блок с балансом и подпиской -->
+    <div class="info-card">
+        <div class="balance-label">Доступно генераций</div>
+        <div class="balance-value">1 500</div>
+        
+        <div class="divider"></div>
+        
+        <div class="sub-info">🌟 PRO Подписка</div>
+        <div class="sub-date">Активна до 15 ноября 2024</div>
+    </div>
+
+    <!-- Кнопки управления -->
+    <button class="btn btn-primary">Пополнить баланс</button>
+    <button class="btn btn-secondary">Управление подпиской</button>
+    <button class="btn btn-secondary">История списаний</button>
+
+    <script>
+        // Сообщаем Telegram, что мы загрузились
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+        
+        // Красим верхнюю панель Telegram под цвет нашего фона
+        tg.setHeaderColor('#f0f0f3');
+        tg.setBackgroundColor('#f0f0f3');
+    </script>
+
+</body>
+</html>
